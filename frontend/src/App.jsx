@@ -23,8 +23,25 @@ const ProtectedRoute = ({ children }) => {
 
   if (loading) {
     return (
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', backgroundColor: 'var(--bg-primary)' }}>
-        <div style={{ width: '40px', height: '40px', border: '3px solid var(--border-color)', borderTopColor: 'var(--primary)', borderRadius: '50%', animation: 'pulse-slow 1s infinite ease-in-out' }}></div>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100vh',
+          backgroundColor: 'var(--bg-primary)',
+        }}
+      >
+        <div
+          style={{
+            width: '40px',
+            height: '40px',
+            border: '3px solid var(--border-color)',
+            borderTopColor: 'var(--primary)',
+            borderRadius: '50%',
+            animation: 'pulse-slow 1s infinite ease-in-out',
+          }}
+        ></div>
       </div>
     );
   }
@@ -39,7 +56,7 @@ const ProtectedRoute = ({ children }) => {
 const App = () => {
   return (
     <AuthProvider>
-      <Router>
+      <Router basename="/student-manage-system">
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<SplashScreen />} />
@@ -49,15 +66,70 @@ const App = () => {
           <Route path="/forgot-password" element={<ForgotPassword />} />
 
           {/* Protected Routes */}
-          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-          <Route path="/students" element={<ProtectedRoute><StudentList /></ProtectedRoute>} />
-          <Route path="/add-student" element={<ProtectedRoute><AddStudent /></ProtectedRoute>} />
-          <Route path="/students/:id" element={<ProtectedRoute><StudentDetails /></ProtectedRoute>} />
-          <Route path="/students/:id/edit" element={<ProtectedRoute><EditStudent /></ProtectedRoute>} />
-          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-          <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
 
-          {/* 404 Route */}
+          <Route
+            path="/students"
+            element={
+              <ProtectedRoute>
+                <StudentList />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/add-student"
+            element={
+              <ProtectedRoute>
+                <AddStudent />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/students/:id"
+            element={
+              <ProtectedRoute>
+                <StudentDetails />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/students/:id/edit"
+            element={
+              <ProtectedRoute>
+                <EditStudent />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <Settings />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
