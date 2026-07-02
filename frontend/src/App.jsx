@@ -41,7 +41,7 @@ const ProtectedRoute = ({ children }) => {
             borderRadius: '50%',
             animation: 'pulse-slow 1s infinite ease-in-out',
           }}
-        ></div>
+        />
       </div>
     );
   }
@@ -56,14 +56,16 @@ const ProtectedRoute = ({ children }) => {
 const App = () => {
   return (
     <AuthProvider>
-      <Router>
+      <Router basename="/student-manage-system">
         <Routes>
+          {/* Public Routes */}
           <Route path="/" element={<SplashScreen />} />
           <Route path="/welcome" element={<WelcomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
 
+          {/* Protected Routes */}
           <Route
             path="/dashboard"
             element={
@@ -127,6 +129,7 @@ const App = () => {
             }
           />
 
+          {/* 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
