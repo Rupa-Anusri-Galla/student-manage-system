@@ -56,16 +56,14 @@ const ProtectedRoute = ({ children }) => {
 const App = () => {
   return (
     <AuthProvider>
-      <Router basename="/student-manage-system">
+      <Router>
         <Routes>
-          {/* Public Routes */}
           <Route path="/" element={<SplashScreen />} />
           <Route path="/welcome" element={<WelcomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
 
-          {/* Protected Routes */}
           <Route
             path="/dashboard"
             element={
@@ -129,7 +127,6 @@ const App = () => {
             }
           />
 
-          {/* 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
