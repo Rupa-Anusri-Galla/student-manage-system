@@ -2,7 +2,6 @@
   "name": "student-management-system-frontend",
   "private": true,
   "version": "1.0.0",
-  "homepage": "https://Rupa-Anusri-Galla.github.io/student-manage-system",
   "type": "module",
   "scripts": {
     "dev": "vite",
